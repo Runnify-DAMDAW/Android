@@ -15,7 +15,7 @@ class LoginFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
+        inicializarBinding(inflater, container)
         return binding.root
     }
 
