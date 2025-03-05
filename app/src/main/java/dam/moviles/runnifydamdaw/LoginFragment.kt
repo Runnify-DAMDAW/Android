@@ -1,6 +1,7 @@
 package dam.moviles.runnifydamdaw
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -29,6 +30,8 @@ class LoginFragment : Fragment() {
 
         val nc = findNavController()
         val flecha = LoginFragmentDirections.actionLoginFragmentToMainFragment()
+
+        Log.d("Mensaje", "Cambiando ventana")
 
         binding.btnLogin.setOnClickListener {
             nc.navigate(flecha)
