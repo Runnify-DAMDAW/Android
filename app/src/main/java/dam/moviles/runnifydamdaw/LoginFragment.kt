@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
 import dam.moviles.runnifydamdaw.databinding.FragmentLoginBinding
 
 class LoginFragment : Fragment() {
@@ -16,11 +17,21 @@ class LoginFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         inicializarBinding(inflater, container)
+        inicializarBoton()
         return binding.root
     }
 
     private fun inicializarBinding(inflater: LayoutInflater, container: ViewGroup?){
         binding = FragmentLoginBinding.inflate(inflater,container,false)
+    }
+
+    private fun inicializarBoton(){
+
+        val flecha = LoginFragmentDirections.actionLoginFragmentToMainFragment()
+
+        binding.btnLogin.setOnClickListener {
+            findNavController().navigate(flecha)
+        }
     }
 
 
