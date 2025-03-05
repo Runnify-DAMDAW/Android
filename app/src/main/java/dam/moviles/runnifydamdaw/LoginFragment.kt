@@ -27,10 +27,11 @@ class LoginFragment : Fragment() {
 
     private fun inicializarBoton(){
 
+        val nc = findNavController()
         val flecha = LoginFragmentDirections.actionLoginFragmentToMainFragment()
 
         binding.btnLogin.setOnClickListener {
-            findNavController().navigate(flecha)
+            nc.navigate(flecha)
         }
     }
 
