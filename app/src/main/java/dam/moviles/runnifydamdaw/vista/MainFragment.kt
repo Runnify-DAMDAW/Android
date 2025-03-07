@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dam.moviles.runnifydamdaw.databinding.FragmentMainBinding
 import dam.moviles.runnifydamdaw.modelo.CarreraAdapter
 import dam.moviles.runnifydamdaw.viewModel.MainFragmentViewModel
+import kotlinx.coroutines.launch
 
 
 class MainFragment : Fragment() {
@@ -24,6 +26,7 @@ class MainFragment : Fragment() {
         inicializarBinding(inflater, container)
         inicializarViewModel()
         inicializarRecyclerView()
+        refrescar()
         return binding.root
     }
 
@@ -33,6 +36,15 @@ class MainFragment : Fragment() {
 
     private fun inicializarViewModel(){
         viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
+    }
+
+    fun refrescar(){
+        lifecycleScope.launch {
+            viewModel.cargarListaCarreras(
+                lambdaExito = { },
+                lambdaError = { println("Error") }
+            )
+        }
     }
 
     fun inicializarRecyclerView(){
