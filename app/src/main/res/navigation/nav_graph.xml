@@ -18,5 +18,18 @@
         android:id="@+id/mainFragment"
         android:name="dam.moviles.runnifydamdaw.vista.MainFragment"
         android:label="fragment_main"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main" >
+        <action
+            android:id="@+id/action_mainFragment_to_detalleCarreraFragment"
+            app:destination="@id/detalleCarreraFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detalleCarreraFragment"
+        android:name="dam.moviles.runnifydamdaw.vista.DetalleCarreraFragment"
+        android:label="fragment_detalle_carrera"
+        tools:layout="@layout/fragment_detalle_carrera" >
+        <argument
+            android:name="carrera"
+            app:argType="dam.moviles.runnifydamdaw.modelo.Carrera" />
+    </fragment>
 </navigation>
