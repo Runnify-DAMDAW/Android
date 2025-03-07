@@ -8,6 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import dam.moviles.runnifydamdaw.R
 import dam.moviles.runnifydamdaw.databinding.FragmentDetalleCarreraBinding
+import dam.moviles.runnifydamdaw.modelo.Carrera
+import dam.moviles.runnifydamdaw.modelo.ponerFotoActor
 
 class DetalleCarreraFragment : Fragment() {
 
@@ -18,6 +20,7 @@ class DetalleCarreraFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         inicializarBinding(inflater, container)
+        actualizarInterfaz()
         return binding.root
     }
 
@@ -27,7 +30,14 @@ class DetalleCarreraFragment : Fragment() {
 
     private fun actualizarInterfaz(){
 
+        val carrera:Carrera = DetalleCarreraFragmentArgs.fromBundle(requireArguments()).carrera
 
+        binding.imgCarreraDetalle.ponerFotoActor(carrera)
+        binding.txtNombreCarrera.text = carrera.name
+        binding.txtTipo.text = carrera.category
+        binding.txtFecha.text = carrera.date
+        binding.txtDinero.text = carrera.entry_fee.toString()
+        binding.txtPlazas.text = carrera.available_slots.toString()
 
     }
 
