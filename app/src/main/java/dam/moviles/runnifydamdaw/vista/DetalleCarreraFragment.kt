@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import dam.moviles.runnifydamdaw.R
 import dam.moviles.runnifydamdaw.databinding.FragmentDetalleCarreraBinding
 import dam.moviles.runnifydamdaw.modelo.Carrera
+import dam.moviles.runnifydamdaw.modelo.convertirFecha
 import dam.moviles.runnifydamdaw.modelo.ponerFotoActor
 
 class DetalleCarreraFragment : Fragment() {
@@ -35,11 +36,11 @@ class DetalleCarreraFragment : Fragment() {
         binding.imgCarreraDetalle.ponerFotoActor(carrera)
         binding.txtNombreCarrera.text = carrera.name
         binding.txtTipo.text = carrera.category
-        binding.txtFecha.text = carrera.date
+        binding.txtFecha.text = convertirFecha(carrera.date,true)
         binding.txtDinero.text = carrera.entry_fee.toString()
         binding.txtPlazas.text = carrera.available_slots.toString()
+        binding.txtDescripcion.text = carrera.description.toString()
+        binding.txtEstado.text = carrera.status.toString()
 
     }
-
-
 }
