@@ -6,15 +6,21 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import dam.moviles.runnifydamdaw.R
 import dam.moviles.runnifydamdaw.databinding.FragmentDetalleCarreraBinding
 import dam.moviles.runnifydamdaw.modelo.Carrera
+import dam.moviles.runnifydamdaw.modelo.CarreraRepository
+import dam.moviles.runnifydamdaw.modelo.Participante
+import dam.moviles.runnifydamdaw.modelo.User
 import dam.moviles.runnifydamdaw.modelo.convertirFecha
 import dam.moviles.runnifydamdaw.modelo.ponerFotoActor
+import kotlinx.coroutines.launch
 
 class DetalleCarreraFragment : Fragment() {
 
     lateinit var binding:FragmentDetalleCarreraBinding
+    val carrera:Carrera = DetalleCarreraFragmentArgs.fromBundle(requireArguments()).carrera
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -29,9 +35,38 @@ class DetalleCarreraFragment : Fragment() {
         binding= FragmentDetalleCarreraBinding.inflate(inflater, container, false)
     }
 
-    private fun actualizarInterfaz(){
+    private fun inicializarBoton(){
+        binding.btnInscribirse.setOnClickListener{
+            lifecycleScope.launch {
+                inscribirse()
+            }
+        }
+    }
 
-        val carrera:Carrera = DetalleCarreraFragmentArgs.fromBundle(requireArguments()).carrera
+    private suspend fun inscribirse() {
+        val roles = listOf("USER_ROLE")
+
+        val p = Participante(
+            1,
+            User(
+                id = 1,
+                email = "ejemplo@ejemplo.com",
+                roles = roles,
+                name = "Juan Pérez",
+                banned = false
+            ),
+            carrera,
+            null,
+            null,
+            null
+        )
+
+        // Llamada a la función para agregar el participante
+        CarreraRepository().addParticipante(p)
+    }
+
+
+    private fun actualizarInterfaz(){
 
         binding.imgCarreraDetalle.ponerFotoActor(carrera)
         binding.txtNombreCarrera.text = carrera.name

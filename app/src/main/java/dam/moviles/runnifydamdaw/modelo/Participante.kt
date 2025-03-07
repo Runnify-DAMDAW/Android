@@ -6,8 +6,9 @@ import java.io.Serializable
 @JsonClass(generateAdapter = true)
 data class Participante(
     val id: Int,
-    val user: User,
+    val running_participant: User,
+    val running: Carrera,
     val time: String?,
-    val dorsal: Int,
-    val banned: Boolean
+    val dorsal: Int?,
+    val banned: Boolean?
 ):Serializable

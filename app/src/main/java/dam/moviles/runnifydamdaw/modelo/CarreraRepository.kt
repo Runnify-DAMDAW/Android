@@ -17,4 +17,7 @@ class CarreraRepository {
     }
     suspend fun consultarTodosActores():List<Carrera> =
         carreraApi.consultarTodasCarreras()
+
+    suspend fun addParticipante(p: Participante): Participante =
+        carreraApi.addParticipante(p)
 }
