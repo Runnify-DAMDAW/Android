@@ -1,6 +1,7 @@
 package dam.moviles.runnifydamdaw.vista
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import dam.moviles.runnifydamdaw.databinding.FragmentMainBinding
 import dam.moviles.runnifydamdaw.modelo.CarreraAdapter
+import dam.moviles.runnifydamdaw.modelo.CarreraRepository
 import dam.moviles.runnifydamdaw.viewModel.MainFragmentViewModel
 import kotlinx.coroutines.launch
 
@@ -27,6 +29,7 @@ class MainFragment : Fragment() {
         inicializarViewModel()
         inicializarRecyclerView()
         refrescar()
+        test()
         return binding.root
     }
 
@@ -42,7 +45,7 @@ class MainFragment : Fragment() {
         lifecycleScope.launch {
             viewModel.cargarListaCarreras(
                 lambdaExito = { },
-                lambdaError = { println("Error") }
+                lambdaError = { }
             )
         }
     }
@@ -53,6 +56,14 @@ class MainFragment : Fragment() {
 
 
         }
+    }
+
+    fun test(){
+
+        lifecycleScope.launch {
+            Log.d("Api", CarreraRepository().consultarTodosActores().toString())
+        }
+
     }
 
 }

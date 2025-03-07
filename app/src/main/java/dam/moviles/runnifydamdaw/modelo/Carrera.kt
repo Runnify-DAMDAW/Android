@@ -1,7 +1,9 @@
 package dam.moviles.runnifydamdaw.modelo
 
+import com.squareup.moshi.JsonClass
 import java.io.Serializable
 
+@JsonClass(generateAdapter = true)
 data class Carrera(
     val id: Int,
     val name: String,
