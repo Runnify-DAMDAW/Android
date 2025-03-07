@@ -50,11 +50,10 @@ class MainFragment : Fragment() {
         }
     }
 
-    fun inicializarRecyclerView(){
-        binding.lstCarreras.adapter = CarreraAdapter(viewModel.listaCarreras){ holder ->
-
-
-
+    private fun inicializarRecyclerView() {
+        binding.lstCarreras.adapter = CarreraAdapter(viewModel.listaCarreras) { holder ->
+            val carrera = viewModel.listaCarreras.get(holder.adapterPosition)
+            Log.d("MainFragment", "Carrera seleccionada: ${carrera?.name}")
         }
     }
 
