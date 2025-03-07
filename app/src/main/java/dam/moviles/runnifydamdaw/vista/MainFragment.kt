@@ -28,7 +28,7 @@ class MainFragment : Fragment() {
         inicializarBinding(inflater, container)
         inicializarViewModel()
         inicializarRecyclerView()
-        refrescar()
+        cargarDatos()
         test()
         return binding.root
     }
@@ -41,11 +41,11 @@ class MainFragment : Fragment() {
         viewModel = ViewModelProvider(this).get(MainFragmentViewModel::class.java)
     }
 
-    fun refrescar(){
+    fun cargarDatos(){
         lifecycleScope.launch {
             viewModel.cargarListaCarreras(
-                lambdaExito = { },
-                lambdaError = { }
+                lambdaExito = {inicializarRecyclerView()},
+                lambdaError = { e -> Log.d("Error",e) }
             )
         }
     }
