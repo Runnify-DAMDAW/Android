@@ -1,4 +1,4 @@
-package dam.moviles.runnifydamdaw
+package dam.moviles.runnifydamdaw.vista
 
 import android.os.Bundle
 import android.util.Log

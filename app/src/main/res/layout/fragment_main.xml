@@ -5,53 +5,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".vista.MainActivity">
 
-    <!-- Encabezado con Logo -->
-    <ImageView
-        android:id="@+id/imgLogo"
-        android:layout_width="200dp"
-        android:layout_height="150dp"
-        android:src="@drawable/logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
 
-    <!-- Menú lateral -->
-    <LinearLayout
-        android:id="@+id/menuLateral"
-        android:layout_width="200dp"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lstCarreras"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="152dp"
-        android:orientation="vertical"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imgLogo"> <!-- Aquí agregamos un margen superior para separar los botones -->
-
-        <Button
-            android:id="@+id/btnMostrarCarreras"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2A6F2C"
-            android:text="Mostrar Carreras"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/btnMisCarreras"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2C732E"
-            android:text="Mis Carreras"
-            android:textColor="@color/black" />
-
-        <Button
-            android:id="@+id/btnRankings"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#2B712D"
-            android:text="Rankings"
-            android:textColor="@color/black" />
-
-    </LinearLayout>
+        android:layout_weight="1"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:layout_marginTop="32dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
