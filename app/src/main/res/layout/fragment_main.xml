@@ -1,21 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainFragment" >
+    tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="205dp"
-        android:layout_height="79dp"
-        android:layout_marginTop="292dp"
-        android:gravity="center"
-        android:text="Prueba"
-        android:textSize="42dp"
-        app:layout_constraintEnd_toEndOf="parent"
+    <!-- Encabezado con Logo -->
+    <ImageView
+        android:id="@+id/imgLogo"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:src="@drawable/logo"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- Menú lateral -->
+    <LinearLayout
+        android:id="@+id/menuLateral"
+        android:layout_width="200dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="96dp"
+        android:layout_marginTop="152dp"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgLogo"> <!-- Aquí agregamos un margen superior para separar los botones -->
+
+        <Button
+            android:id="@+id/btnMostrarCarreras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2A6F2C"
+            android:text="Mostrar Carreras"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnMisCarreras"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2C732E"
+            android:text="Mis Carreras"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/btnRankings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#2B712D"
+            android:text="Rankings"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
