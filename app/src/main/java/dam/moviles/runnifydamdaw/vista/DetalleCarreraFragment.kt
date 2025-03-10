@@ -20,13 +20,20 @@ import kotlinx.coroutines.launch
 class DetalleCarreraFragment : Fragment() {
 
     lateinit var binding:FragmentDetalleCarreraBinding
-    val carrera:Carrera = DetalleCarreraFragmentArgs.fromBundle(requireArguments()).carrera
+    private lateinit var carrera: Carrera // Cambiado a lateinit var
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         inicializarBinding(inflater, container)
+
+
+        // Recuperar los argumentos
+        arguments?.let { bundle ->
+            carrera = DetalleCarreraFragmentArgs.fromBundle(bundle).carrera
+        } ?: throw IllegalStateException("Carrera no proporcionada")
+
         actualizarInterfaz()
         return binding.root
     }
@@ -35,8 +42,8 @@ class DetalleCarreraFragment : Fragment() {
         binding= FragmentDetalleCarreraBinding.inflate(inflater, container, false)
     }
 
-    private fun inicializarBoton(){
-        binding.btnInscribirse.setOnClickListener{
+    private fun inicializarBoton() {
+        binding.btnInscribirse.setOnClickListener {
             lifecycleScope.launch {
                 inscribirse()
             }
@@ -47,8 +54,8 @@ class DetalleCarreraFragment : Fragment() {
         val roles = listOf("USER_ROLE")
 
         val p = Participante(
-            1,
-            User(
+            id = 1,
+            user = User(
                 id = 1,
                 email = "ejemplo@ejemplo.com",
                 roles = roles,
@@ -58,27 +65,24 @@ class DetalleCarreraFragment : Fragment() {
                 gender = "M",
                 image = ""
             ),
-            carrera,
-            null,
-            null,
-            null
+            running = carrera,
+            time = null,
+            dorsal = null,
+            banned = null
         )
 
         // Llamada a la función para agregar el participante
         CarreraRepository().addParticipante(p)
     }
 
-
-    private fun actualizarInterfaz(){
-
+    private fun actualizarInterfaz() {
         binding.imgCarreraDetalle.ponerFotoActor(carrera)
         binding.txtNombreCarrera.text = carrera.name
         binding.txtTipo.text = carrera.category
-        binding.txtFecha.text = convertirFecha(carrera.date,true)
+        binding.txtFecha.text = convertirFecha(carrera.date, true)
         binding.txtDinero.text = carrera.entry_fee.toString()
         binding.txtPlazas.text = carrera.available_slots.toString()
-        binding.txtDescripcion.text = carrera.description.toString()
-        binding.txtEstado.text = carrera.status.toString()
-
+        binding.txtDescripcion.text = carrera.description
+        binding.txtEstado.text = carrera.status
     }
 }
