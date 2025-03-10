@@ -53,7 +53,10 @@ class DetalleCarreraFragment : Fragment() {
                 email = "ejemplo@ejemplo.com",
                 roles = roles,
                 name = "Juan Pérez",
-                banned = false
+                banned = false,
+                age = 19,
+                gender = "M",
+                image = ""
             ),
             carrera,
             null,

@@ -10,7 +10,7 @@ class CarreraRepository {
 
     init {
         carreraApi = Retrofit.Builder()
-            .baseUrl("http://192.168.70.82:8000")
+            .baseUrl("http://192.168.70.91:8000")
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()

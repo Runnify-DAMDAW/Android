@@ -17,5 +17,6 @@ data class Carrera(
     val status: String,
     val category: String,
     val image: String,
+    val gender: String, // Añadido para coincidir con el JSON
     val runningParticipants: List<Participante>
-):Serializable
+) : Serializable

@@ -9,5 +9,8 @@ data class User(
     val email: String,
     val roles: List<String>,
     val name: String,
-    val banned: Boolean
-):Serializable
+    val banned: Boolean,
+    val age: Int, // Añadido para coincidir con el JSON
+    val gender: String, // Añadido para coincidir con el JSON
+    val image: String // Añadido para coincidir con el JSON
+) : Serializable
